@@ -69,3 +69,5 @@
 - [PassWall](https://github.com/xiaorouji/openwrt-passwall)
 - [Lucky](https://github.com/gdy666/luci-app-lucky)
 - [Argon Theme](https://github.com/jerrykuku/luci-theme-argon)
+git clone https://github.com/learningman/ua2f.git package/ua2f
+git clone https://github.com/learningman/campus-auth.git package/campus-auth
