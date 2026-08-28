@@ -99,7 +99,21 @@ jobs:
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
+    - name: Disable incompatible Quectel MHI
+      run: |
+        cd openwrt
 
+        echo "=== Remove kmod-pcie_mhi dependencies ==="
+
+        grep -RIn --include='Makefile' 'kmod-pcie_mhi' feeds/siriling || true
+
+        find feeds/siriling -type f -name Makefile -exec \
+          sed -i 's/+kmod-pcie_mhi//g' {} \;
+
+        rm -rf feeds/siriling/quectel_MHI
+        rm -rf package/feeds/siriling/quectel_MHI
+
+        echo "Quectel MHI disabled."
     - name: Load custom configuration
       run: |
         [ -e files ] && cp -r files openwrt/files
