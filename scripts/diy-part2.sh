@@ -37,18 +37,24 @@ if [ -f feeds/packages/net/fail2ban/Makefile ]; then
     fi
     # Force use of pip install instead of setup.py if needed, or ensure build backend is present
 fi
-# Add Campus Network packages
-echo "Adding Campus Auth and UA2F..."
+# Add CQU campus network packages
+echo "Adding CQU Auth and UA2F..."
 
-rm -rf package/campus-auth package/UA2F
+# Clean old packages
+rm -rf package/campus-auth
+rm -rf package/cquauth
+rm -rf package/UA2F
 
-git clone --depth=1 https://github.com/learningman/campus-auth.git package/campus-auth
+# 重庆大学虎溪校区认证 LuCI 插件
+git clone --depth=1 https://github.com/lurenjiamax/luci-app-cquauth.git package/cquauth
+
+# UA2F
 git clone --depth=1 https://github.com/Zxilly/UA2F.git package/UA2F
 
-echo "Campus Auth:"
-find package/campus-auth -name Makefile -print
+echo "=== CQU Auth ==="
+find package/cquauth -name Makefile -print
 
-echo "UA2F:"
+echo "=== UA2F ==="
 find package/UA2F -name Makefile -print
 
 echo "DIY Part 2: Done"
