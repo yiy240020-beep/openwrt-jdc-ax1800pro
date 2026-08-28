@@ -1,3 +1,4 @@
+rm -rf feeds/siriiling/quectel_cm_56
 #!/bin/bash
 # DIY Part 2: Execute befor make menuconfig
 
@@ -38,7 +39,7 @@ if [ -f feeds/packages/net/fail2ban/Makefile ]; then
 fi
 
 echo "DIY Part 2: Done"
-rm -rf feeds/siriiling/quectel_cm_56
+
 
 git clone https://github.com/learningman/campus-auth.git package/campus-auth
 git clone https://github.com/Zxilly/UA2F.git package/UA2F
