@@ -1,4 +1,3 @@
-rm -rf feeds/siriiling/quectel_cm_56
 #!/bin/bash
 # DIY Part 2: Execute befor make menuconfig
 
