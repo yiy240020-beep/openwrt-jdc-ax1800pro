@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 # DIY Part 2: Execute befor make menuconfig
 
 echo "DIY Part 2: Custom settings"
@@ -36,9 +37,18 @@ if [ -f feeds/packages/net/fail2ban/Makefile ]; then
     fi
     # Force use of pip install instead of setup.py if needed, or ensure build backend is present
 fi
+# Add Campus Network packages
+echo "Adding Campus Auth and UA2F..."
+
+rm -rf package/campus-auth package/UA2F
+
+git clone --depth=1 https://github.com/learningman/campus-auth.git package/campus-auth
+git clone --depth=1 https://github.com/Zxilly/UA2F.git package/UA2F
+
+echo "Campus Auth:"
+find package/campus-auth -name Makefile -print
+
+echo "UA2F:"
+find package/UA2F -name Makefile -print
 
 echo "DIY Part 2: Done"
-
-
-git clone https://github.com/learningman/campus-auth.git package/campus-auth
-git clone https://github.com/Zxilly/UA2F.git package/UA2F
