@@ -10,5 +10,4 @@ echo 'src-git siriling https://github.com/Siriling/5G-Modem-Support.git' >> feed
 # Add any extra logic here if needed
 
 echo "DIY Part 1: Done"
-rm -rf feeds/siriiling/quectel_cm_56
 exit 0
