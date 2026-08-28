@@ -115,7 +115,7 @@ jobs:
         echo "=== Before ==="
         grep 'PKG_MIRROR_HASH' "$FILE"
 
-        sed -i 's/^PKG_MIRROR_HASH:=.*/PKG_MIRROR_HASH:=774d73c4b9e668dface45a76b03b3cfa01de807041ff2e50a431d3803d32e93/' "$FILE"
+         sed -i 's/^PKG_MIRROR_HASH:=.*/PKG_MIRROR_HASH:=774d73c4b9e668dfacfe45a76b03b3cfa01de807041ff2e50a431d3803d32e93/' "$FILE"
 
         echo "=== After ==="
         grep 'PKG_MIRROR_HASH' "$FILE"
