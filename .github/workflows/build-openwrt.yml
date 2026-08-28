@@ -107,7 +107,18 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+    - name: Fix quectel_cm_5G hash
+      run: |
+        cd openwrt
+        FILE="feeds/siriling/quectel_cm_5G/Makefile"
 
+        echo "=== Before ==="
+        grep 'PKG_MIRROR_HASH' "$FILE"
+
+        sed -i 's/^PKG_MIRROR_HASH:=.*/PKG_MIRROR_HASH:=774d73c4b9e668dface45a76b03b3cfa01de807041ff2e50a431d3803d32e93/' "$FILE"
+
+        echo "=== After ==="
+        grep 'PKG_MIRROR_HASH' "$FILE"
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh != 'false') || contains(github.event.action, 'ssh')
