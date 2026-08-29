@@ -13,9 +13,8 @@ echo "Setting hostname to JDCloud..."
 sed -i 's/ImmortalWrt/JDCloud/g' package/base-files/files/bin/config_generate
 
 # Modify default timezone
-echo "Setting timezone to Asia/Shanghai..."
-sed -i "s/'UTC'/'CST-8'/g" package/base-files/files/bin/config_generate
-sed -i "s/UTC/Asia\/Shanghai/g" package/base-files/files/bin/config_generate
+# Timezone
+echo "Keep default timezone settings"
 
 # Modify default theme
 echo "Setting default theme to Argon..."
@@ -37,22 +36,14 @@ if [ -f feeds/packages/net/fail2ban/Makefile ]; then
     fi
     # Force use of pip install instead of setup.py if needed, or ensure build backend is present
 fi
-# Add CQU campus network packages
-echo "Adding CQU Auth and UA2F..."
+# Add UA2F
+echo "Adding UA2F..."
 
-# Clean old packages
-rm -rf package/campus-auth
-rm -rf package/cquauth
+# Clean old package
 rm -rf package/UA2F
-
-# 重庆大学虎溪校区认证 LuCI 插件
-git clone --depth=1 https://github.com/lurenjiamax/luci-app-cquauth.git package/cquauth
 
 # UA2F
 git clone --depth=1 https://github.com/Zxilly/UA2F.git package/UA2F
-
-echo "=== CQU Auth ==="
-find package/cquauth -name Makefile -print
 
 echo "=== UA2F ==="
 find package/UA2F -name Makefile -print
